@@ -1,14 +1,18 @@
 ﻿
 # include <Siv3D.hpp>
 
+#include "Botan.h"
+
 void Main()
 {
-	const Font font(30);
+	vector<Color> c = vector<Color>();
+	c.push_back(Palette::White); c.push_back(Palette::Yellow);
+	Botan* botan = new Botan(Vec2(500, 500), Vec2(0, -10), c, 100);
 
 	while (System::Update())
 	{
-		font(L"ようこそ、Siv3D の世界へ！").draw();
-
-		Circle(Mouse::Pos(), 50).draw({ 255, 0, 0, 127 });
+		ClearPrint();
+		botan->Update();
+		botan->Draw();
 	}
 }
